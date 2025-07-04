@@ -118,36 +118,61 @@
 // export default App
 
 
-import React, { useEffect } from 'react'
-import axios from 'axios'
+// import React, { useEffect } from 'react'
+// import axios from 'axios'
+
+// const App = () => {
+
+//   const [data, setData] = React.useState([])
+
+//   const getData = async () => {
+//     // axios is a promise-based HTTP client for the browser and Node.js
+//     // It gets the data in the form of a promise
+//     // A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+//     const response = await axios.get('https://picsum.photos/v2/list')
+//     setData(response.data)  
+//   }
+
+//   useEffect(() => {
+//     getData()
+//   },[])
+
+//   return (
+//     <div className='p-10'>
+//       <button onClick={getData} className='bg-teal-600 text-white font-semibold text-2xl px-6 py-3 rounded active:scale-90'>Get Data</button>
+//       <div className='p-5 mt-5 bg-gray-950'>
+//         {data.map(function(Element, idx){
+//           return <div key={idx} className='bg-gray-50 text-black flex item-center justify-between w-full px-7 py-6 rounded mb-3'>
+//               <img className='h-40' src={Element.download_url} alt="" />
+//               <h1>{Element.author}</h1>
+//           </div>
+//         })}
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import About from './pages/About.jsx'
+import Home from './pages/Home.jsx'
+import Product from './pages/Product.jsx'
+import Contact from './pages/Contact.jsx'
+import Headers from './Components/Headers.jsx'
 
 const App = () => {
-
-  const [data, setData] = React.useState([])
-
-  const getData = async () => {
-    // axios is a promise-based HTTP client for the browser and Node.js
-    // It gets the data in the form of a promise
-    // A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
-    const response = await axios.get('https://picsum.photos/v2/list')
-    setData(response.data)  
-  }
-
-  useEffect(() => {
-    getData()
-  },[])
-
   return (
-    <div className='p-10'>
-      <button onClick={getData} className='bg-teal-600 text-white font-semibold text-2xl px-6 py-3 rounded active:scale-90'>Get Data</button>
-      <div className='p-5 mt-5 bg-gray-950'>
-        {data.map(function(Element, idx){
-          return <div key={idx} className='bg-gray-50 text-black flex item-center justify-between w-full px-7 py-6 rounded mb-3'>
-              <img className='h-40' src={Element.download_url} alt="" />
-              <h1>{Element.author}</h1>
-          </div>
-        })}
-      </div>
+    <div>
+      <Headers />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/product' element={<Product />} />
+      </Routes>
     </div>
   )
 }
