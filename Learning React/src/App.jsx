@@ -155,24 +155,50 @@
 // export default App
 
 
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import About from './pages/About.jsx'
-import Home from './pages/Home.jsx'
-import Product from './pages/Product.jsx'
-import Contact from './pages/Contact.jsx'
-import Headers from './Components/Headers.jsx'
+// import React from 'react'
+// import { Route, Routes } from 'react-router-dom'
+// import About from './pages/About.jsx'
+// import Home from './pages/Home.jsx'
+// import Product from './pages/Product.jsx'
+// import Contact from './pages/Contact.jsx'
+// import Headers from './Components/Headers.jsx'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Headers />
+//       <Routes>
+//         <Route path='/' element={<Home />} />
+//         <Route path='/about' element={<About />} />
+//         <Route path='/contact' element={<Contact />} />
+//         <Route path='/product' element={<Product />} />
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// export default App
+
+// Context Api is used to centralize the data
+
+import React, { useContext } from 'react'
+import Head from './Components/Head.jsx'
+import Section from './Components/Section.jsx'
+import Foot from './Components/Foot.jsx'
+import { DataContext } from './context/UserContext.jsx'
 
 const App = () => {
+
+  const data = useContext(DataContext)
+  console.log(data);
+  
+
   return (
     <div>
-      <Headers />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/product' element={<Product />} />
-      </Routes>
+      <h1>This is App</h1>
+      <Head />
+      <Section />
+      <Foot />
     </div>
   )
 }
